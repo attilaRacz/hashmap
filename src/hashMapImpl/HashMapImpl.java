@@ -1,7 +1,7 @@
 package hashMapImpl;
 
 import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class HashMapImpl {
 
@@ -49,5 +49,6 @@ public class HashMapImpl {
     }
 
     public void clearAll() {
+        IntStream.range(0, array.length).filter(i -> array[i] != null).forEach(i -> array[i] = null);
     }
 }

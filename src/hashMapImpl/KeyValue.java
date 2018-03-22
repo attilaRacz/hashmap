@@ -1,6 +1,6 @@
 package hashMapImpl;
 
-public class KeyValue {
+class KeyValue {
     String key;
     Integer value;
 
