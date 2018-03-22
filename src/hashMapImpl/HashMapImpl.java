@@ -1,5 +1,6 @@
 package hashMapImpl;
 
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class HashMapImpl {
@@ -24,7 +25,7 @@ public class HashMapImpl {
     public Integer getValue(String key) {
         int index = key.hashCode() % arraySize;
         while(array[index] != null) {
-            if(Objects.equals(array[index].key, key)) {
+            if(array[index].key.equals(key)) {
                 System.out.println("key \"" + key + "\" found at index " + index);
                 return array[index].value;
             }
@@ -32,5 +33,21 @@ public class HashMapImpl {
             index %= arraySize;
         }
         return null;
+    }
+
+    public void remove(String key) {
+        int index = key.hashCode() % arraySize;
+        while(array[index] != null) {
+            if(array[index].key.equals(key)) {
+                array[index] = null;
+                return;
+            }
+            ++index;
+            index %= arraySize;
+        }
+        throw new NoSuchElementException("The key is not present in the HashMapImpl.");
+    }
+
+    public void clearAll() {
     }
 }
